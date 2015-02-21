@@ -1,4 +1,4 @@
-/* T I N Y S C H E M E    1 . 3 8
+/* T I N Y S C H E M E    1 . 3 9
  *   Dimitrios Souflis (dsouflis@acm.org)
  *   Based on MiniScheme (original credits follow)
  * (MINISCM)               coded by Atsushi Moriwaki (11/5/1989)
@@ -58,7 +58,7 @@
  *  Basic memory allocation units
  */
 
-#define banner "TinyScheme 1.38"
+#define banner "TinyScheme 1.39"
 
 #include <string.h>
 #include <stdlib.h>
@@ -1076,14 +1076,14 @@ static pointer mk_sharp_const(scheme *sc, char *name) {
      else if (!strcmp(name, "f"))
           return (sc->F);
      else if (*name == 'o') {/* #o (octal) */
-          sprintf(tmp, "0%s", name+1);
+          snprintf(tmp, sizeof(tmp), "0%s", name+1);
           sscanf(tmp, "%lo", &x);
           return (mk_integer(sc, x));
      } else if (*name == 'd') {    /* #d (decimal) */
           sscanf(name+1, "%ld", &x);
           return (mk_integer(sc, x));
      } else if (*name == 'x') {    /* #x (hex) */
-          sprintf(tmp, "0x%s", name+1);
+          snprintf(tmp, sizeof(tmp), "0x%s", name+1);
           sscanf(tmp, "%lx", &x);
           return (mk_integer(sc, x));
      } else if (*name == 'b') {    /* #b (binary) */

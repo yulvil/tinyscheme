@@ -1,5 +1,7 @@
      Change Log
      ----------
+     Version 1.39
+          Drew Yao fixed buffer overflow problems in mk_sharp_const.
      Version 1.38
           Interim release until the rewrite, mostly incorporating modifications from 
           Kevin Cozens. Small addition for Cygwin in the makefile, and modifications
